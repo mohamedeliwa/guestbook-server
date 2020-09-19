@@ -23,7 +23,7 @@ const messageSchema = new mongoose.Schema(
     toJSON: { virtuals: true },
   }
 );
-userSchema.virtual("replies", {
+messageSchema.virtual("replies", {
   ref: "Reply",
   localField: "_id",
   foreignField: "message",
