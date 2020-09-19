@@ -4,11 +4,10 @@ const mongoose = require("mongoose");
 const replySchema = new mongoose.Schema(
   {
     content: {
-      // content of the message
+
       type: String,
       required: true,
       trim: true,
-      // minlength: 4,
       maxlength: 200,
     },
     message: {
@@ -17,7 +16,6 @@ const replySchema = new mongoose.Schema(
       ref: "Message",
     },
     owner: {
-      // owner of the message
       type: mongoose.Schema.Types.ObjectId,
       required: true,
       ref: "User",
@@ -28,17 +26,7 @@ const replySchema = new mongoose.Schema(
   }
 );
 
-// messageSchema.methods.toJSON = function () {
-//   const message = this;
-//   const messageObject = message.toObject();
-//   // removing sensitive informations
 
-//   return messageObject;
-// };
-
-/**
- * Creating a Message model.
- */
 const Reply = mongoose.model("Reply", replySchema);
 
 module.exports = Reply;
