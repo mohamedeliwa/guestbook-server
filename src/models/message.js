@@ -8,8 +8,8 @@ const messageSchema = new mongoose.Schema(
       type: String,
       required: true,
       trim: true,
-      minlength: 4,
-      //   maxlength: 150,
+      // minlength: 4,
+        maxlength: 200,
     },
     owner: {
       // owner of the message
@@ -35,6 +35,6 @@ const messageSchema = new mongoose.Schema(
 /**
  * Creating a Message model.
  */
-const Message = mongoose.model("Mesaage", postSchema);
+const Message = mongoose.model("Mesaage", messageSchema);
 
 module.exports = Message;
