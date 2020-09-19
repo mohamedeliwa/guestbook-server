@@ -52,6 +52,16 @@ router.post("/users/login", async (req, res) => {
   }
 });
 
+// End-Point for fetching Profile data,
+router.get("/users/profile", auth, async (req, res) => {
+  try {
+    res.send(req.user);
+  } catch (error) {
+    console.log({ error: error.message });
+    res.status(400).send({ error: error.message });
+  }
+});
+
 // End-Point for loging out
 router.post("/users/logout", auth, async (req, res) => {
   try {
