@@ -35,6 +35,6 @@ const messageSchema = new mongoose.Schema(
 /**
  * Creating a Message model.
  */
-const Message = mongoose.model("Mesaage", postSchema);
+const Message = mongoose.model("Mesaage", messageSchema);
 
 module.exports = Message;
