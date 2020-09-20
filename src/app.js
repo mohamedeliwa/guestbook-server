@@ -4,6 +4,7 @@ const cors = require("cors");
 require("./db/mongoose");
 const userRouter = require("./routers/user");
 const messageRouter = require("./routers/message");
+const replyRouter = require("./routers/reply");
 
 const app = express();
 
@@ -22,5 +23,5 @@ app.use(cors(corsOptions));
 
 app.use(userRouter);
 app.use(messageRouter);
-
+app.use(replyRouter)
 module.exports = app;
