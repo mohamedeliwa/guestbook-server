@@ -20,8 +20,14 @@ const messageSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
+    toJSON: { virtuals: true },
   }
 );
+messageSchema.virtual("replies", {
+  ref: "Reply",
+  localField: "_id",
+  foreignField: "message",
+});
 
 // messageSchema.methods.toJSON = function () {
 //   const message = this;
