@@ -77,6 +77,9 @@ router.get("/messages/:id", auth, async (req, res) => {
     const user = req.user;
     const message = await Message.findById(req.params.id).populate({
       path: "owner",
+    }).populate({
+      path: "replies",
+      populate: {path: "owner"}
     });
 
     if (!message) throw new Error("Message not found!");
