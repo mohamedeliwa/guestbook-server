@@ -1,6 +1,7 @@
 const express = require("express");
 const User = require("../models/user");
 const Message = require("../models/message");
+const Reply = require("../models/reply");
 // Requiring auth middleware
 const auth = require("../middleware/auth");
 
@@ -126,6 +127,7 @@ router.delete("/messages/:id", auth, async (req, res) => {
     const owner = req.user;
     const message = await Message.findByIdAndDelete(req.params.id);
     if (!message) return res.status(404).send({ error: "Message not found!" });
+    const replies = await Reply.deleteMany({message: req.params.id});
     res.send(message);
   } catch (error) {
     console.log({ error: error.message });
